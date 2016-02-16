@@ -5,9 +5,7 @@ class ReplayPlayer extends EventEmitter
 	constructor: (data) ->
 		EventEmitter.call(this)
 
-		window.replay = this
-
-		console.log 'init data', data
+		window.replay_hsarenadraft = this
 
 		@detectedHeroes = data.detectedheroes
 		@pickedHero = data.pickedhero
@@ -20,7 +18,6 @@ class ReplayPlayer extends EventEmitter
 		@cardUtils = window['parseCardsText']
 
 	init: ->
-		console.log 'starting init'
 		@currentPick = -1
 
 		# Go to the fisrt action - hero selection
@@ -34,27 +31,30 @@ class ReplayPlayer extends EventEmitter
 	# Moving inside the replay (with player controls)
 	# ========================
 	goNextPick: ->
-		console.log 'going to next pick'
 		@currentPick = Math.min(@currentPick + 1, 30)
-		@handlePick()
 
 	goPreviousPick: ->
-		console.log 'going to next pick'
 		@currentPick = Math.max(@currentPick - 1, 0)
-		@handlePick()
 
+	decoratePicks: (text) ->
+		pickRegex = /(p|P)\d?\d(:|\s|,|\.)/gm
 
-	handlePick: ->
-		if @currentPick == 0
-			console.log 'Picking hero', @detectedHeroes
-			console.log '\tPicked hero', @pickedHero
+		that = this
+		matches = text.match(pickRegex)
 
-		else
-			console.log 'Picking card', @detectedCards[@currentPick - 1]
-			console.log '\tPicked card', @pickedCards[@currentPick - 1]
+		if matches and matches.length > 0
+			matches.forEach (match) ->
+				#console.log '\tformattedTimeStamp', formattedTimeStamp
+				text = text.replace match, '<a ng-click="goToTimestamp(\'' + match + '\')" class="ng-scope">' + match + '</a>'
 
-	replaceKeywordsWithTimestamp: (text) ->
+		#console.log 'modified text', text
 		return text
+
+	moveToPick: (pick) ->
+		pickNumber = parseInt(pick.substring 1, pick.length - 1)
+		console.log 'moving to pick', pickNumber
+		@currentPick = pickNumber
+		@emit 'replay-ready'
 
 
 module.exports = ReplayPlayer

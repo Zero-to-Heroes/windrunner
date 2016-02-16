@@ -16,11 +16,12 @@ class Card extends React.Component
 			cls += " " + @props.className
 
 		if @props.isPicked
-			cls += " picked"
+			overlay = <span className="glyphicon glyphicon-ok picked"></span>
 
 
 		link = '<img src="' + art + '">';
 		return <div className={cls} style={style} data-tip={link} data-html={true} data-place="right" data-effect="solid" data-delay-show="100" data-class="card-tooltip">
+			{overlay}
 		</div>
 
 

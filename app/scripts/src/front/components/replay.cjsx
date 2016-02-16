@@ -8,6 +8,7 @@ HeroPick = require './ui/replay/heropick'
 ChosenHero = require './ui/replay/chosenhero'
 CardPick = require './ui/replay/cardpick'
 DeckList = require './ui/replay/decklist'
+ManaCurve = require './ui/replay/manacurve'
 
 ReactTooltip = require("react-tooltip")
 {subscribe} = require '../../subscription'
@@ -19,25 +20,31 @@ class Replay extends React.Component
 		@state = replay: new ReplayPlayer(props.route.replay)
 
 		subscribe @state.replay, 'replay-ready', =>
-			#console.log 'in players-ready' 
-			@forceUpdate
+			@forceUpdate()
 
 		@state.replay.init()
 
 	render: ->
 		replay = @state.replay
 
-		return <div className="arena-replay">
+		cls = "arena-replay"
+		if replay.currentPick <= 0
+			cls += " hero-selection"
+		else
+			cls += " pick-selection"
+
+		return <div className={cls}>
 					<ReactTooltip />
 					<div className="pick-area">
-						<HeroPick replay={@state.replay}/>
-						<CardPick replay={@state.replay} />
+						<HeroPick replay={replay}/>
+						<CardPick replay={replay} />
 					</div>
-					<DeckList replay={@state.replay} />
-					<ChosenHero replay={@state.replay} />
+					<DeckList replay={replay} />
+					<ChosenHero replay={replay} />
+					<ManaCurve replay={replay} />
 					<div className="controls">
 						<Button glyph="to-start" onClick={@goPreviousPick}/>
-						<span className="pick-status">p{replay.currentPick} / 30</span>
+						<span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
 						<Button glyph="to-end" onClick={@goNextPick}/>
 					</div>
 				</div>

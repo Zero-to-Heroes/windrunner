@@ -25,7 +25,7 @@ class HeroPick extends React.Component
 			card = _.filter heroCards, (o) -> 
 				o.playerClass.toLowerCase() == entity.toLowerCase()
 			card = card[0]
-			<Card card={card} key={card.id} isPicked={entity == picked} />
+			<Card card={card} key={card.id} className="hero-card" isPicked={entity == picked} />
 
 		return <ReactCSSTransitionGroup component="div" className="pick"
 					transitionName="animate" transitionEnterTimeout={700}
