@@ -15,7 +15,7 @@ routes = {
 		#console.log 'created routes', routes
 		router = <Router history={createMemoryHistory()}>{routes}</Router>
 
-		externalPlayer = document.getElementById('externalPlayer');
+		externalPlayer = document.getElementById('externalPlayer-arena-draft');
 		render(router, externalPlayer)
 }
 

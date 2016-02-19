@@ -33,7 +33,6 @@ class DeckList extends React.Component
 			# Now sort that array
 			console.log 'sorting deck list', cards
 			sorted = _.sortBy cards, (item) ->
-				console.log 'looking at sorting item', item, [item.entity.cost, item.entity.name]
 				return [item.entity.cost, item.entity.name]
 			console.log '\tsorted', sorted
 

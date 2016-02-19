@@ -19,12 +19,18 @@ class Replay extends React.Component
 		super(props)
 		@state = replay: new ReplayPlayer(props.route.replay)
 
+	componentDidMount: ->
 		subscribe @state.replay, 'replay-ready', =>
 			@forceUpdate()
 
 		@state.replay.init()
 
+
+	componentWillUnmount: ->
+		console.log 'replay unmounted'
+
 	render: ->
+		console.log 'rendering'
 		replay = @state.replay
 
 		cls = "arena-replay"
