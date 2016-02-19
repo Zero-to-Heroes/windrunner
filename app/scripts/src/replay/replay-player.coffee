@@ -42,19 +42,19 @@ class ReplayPlayer extends EventEmitter
 		@currentPick = Math.max(@currentPick - 1, 0)
 
 	decoratePicks: (text) ->
-		# console.log 'decorating picks', text
+		console.log 'decorating picks', text
 		pickRegex = /(p|P)\d?\d(:|\s|,|\.|$)/gm
 
 		that = this
 		matches = text.match(pickRegex)
-		# console.log '\tmatches', matches
+		console.log '\tmatches', matches
 
 		if matches and matches.length > 0
 			noDupesMatch = _.uniq matches
-			# console.log 'single matches', noDupesMatch
+			console.log 'single matches', noDupesMatch
 			noDupesMatch.forEach (match) ->
 				find = match.trim()
-				# console.log '\tmatch', match, find
+				console.log '\tmatch', match, find
 
 				text = text.replace match, '<a ng-click="goToTimestamp(\'' + find + '\')" class="ng-scope">' + match + '</a>'
 
@@ -62,8 +62,8 @@ class ReplayPlayer extends EventEmitter
 		return text
 
 	moveToPick: (pick) ->
-		pickNumber = parseInt(pick.substring 1, pick.length - 1)
-		# console.log 'moving to pick', pickNumber
+		pickNumber = parseInt(pick.substring 1, pick.length)
+		console.log 'moving to pick', pickNumber
 		@currentPick = pickNumber
 		@emit 'replay-ready'
 
