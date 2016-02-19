@@ -1,4 +1,5 @@
 _ = require 'lodash'
+$ = require 'jquery'
 EventEmitter = require 'events'
 
 class ReplayPlayer extends EventEmitter
@@ -25,6 +26,10 @@ class ReplayPlayer extends EventEmitter
 
 		# Notify the UI controller
 		@emit 'replay-ready'
+
+		# Preload the images
+		images = @buildImagesArray()
+		@preloadPictures images
 
 
 	# ========================
@@ -62,5 +67,26 @@ class ReplayPlayer extends EventEmitter
 		@currentPick = pickNumber
 		@emit 'replay-ready'
 
+	preloadPictures: (arrayOfImages) ->
+		arrayOfImages.forEach (img) ->
+			# console.log 'preloading', img
+			(new Image()).src = img
+		
+		# console.log 'preloaded images'	
+
+	buildImagesArray: ->
+		images = []
+
+		ids = []
+		for cards in @detectedCards
+			ids.push cards.Item1
+			ids.push cards.Item2
+			ids.push cards.Item3
+
+		for id in ids
+			images.push @cardUtils.buildFullCardImageUrl(@cardUtils.getCard(id))
+
+		# console.log 'image array', images
+		return images
 
 module.exports = ReplayPlayer
