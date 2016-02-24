@@ -89,4 +89,20 @@ class ReplayPlayer extends EventEmitter
 		# console.log 'image array', images
 		return images
 
+	getPlayerInfo: ->
+		heroCards = _.filter @cardUtils.jsonDatabase, (o) -> 
+			return o.type == 'Hero' and o.playerClass and o.set == 'Basic'
+
+		pickedHero = @pickedHero
+		pickedCard = _.filter heroCards, (o) -> 
+			o.playerClass.toLowerCase() == pickedHero.toLowerCase()
+
+		playerInfo = {
+			player: {
+				'class': pickedCard[0]?.playerClass?.toLowerCase()
+			}
+		}
+		
+		return playerInfo
+
 module.exports = ReplayPlayer

@@ -24,6 +24,11 @@ var hsarenadraft = {
 
 	goToTimestamp: function(pick) {
 		window.replay_hsarenadraft.moveToPick(pick)
+	},
+
+	getPlayerInfo: function() {
+		console.log('retrieving player info')
+		return window.replay_hsarenadraft.getPlayerInfo()
 	}
 }
 
