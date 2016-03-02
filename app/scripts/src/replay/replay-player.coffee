@@ -105,4 +105,7 @@ class ReplayPlayer extends EventEmitter
 		
 		return playerInfo
 
+	isValid: ->
+		return @detectedCards?.length > 0 and @pickedCards?.length > 0 and @pickedHero?.length > 0
+
 module.exports = ReplayPlayer

@@ -29,6 +29,10 @@ var hsarenadraft = {
 	getPlayerInfo: function() {
 		console.log('retrieving player info')
 		return window.replay_hsarenadraft.getPlayerInfo()
+	},
+
+	isValid: function() {
+		return window.replay_hsarenadraft.isValid()
 	}
 }
 
