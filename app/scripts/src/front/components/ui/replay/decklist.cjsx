@@ -10,16 +10,17 @@ class DeckList extends React.Component
 
 
 	render: ->
-		if @props.replay.currentPick > 1
+		replay = @props.replay
+		if replay.currentPick > 1
 			# Build the decklist
 			decklist = {}
 
 			# The current pick is not done yet, and we have an offset of 1 because of hero pick
-			for i in [0..@props.replay.currentPick - 2]
-				card = @props.replay.pickedCards[i]
+			for i in [0..replay.currentPick - 2]
+				card = replay.pickedCards[i]
 				if !decklist[card]
 					decklist[card] = 
-						entity: @props.replay.cardUtils.getCard(card)
+						entity: replay.cardUtils.getCard(card)
 						number: 1
 				else
 					decklist[card].number++
@@ -36,9 +37,8 @@ class DeckList extends React.Component
 				return [item.entity.cost, item.entity.name]
 			console.log '\tsorted', sorted
 
-
 			cardImages = sorted.map (card) ->
-				<DecklistCard card={card.entity} key={card.entity.id} count={card.number} />
+				<DecklistCard replay={replay} card={card.entity} key={card.entity.id} count={card.number} />
 
 		return 	<div className="decklist">
 					{cardImages}

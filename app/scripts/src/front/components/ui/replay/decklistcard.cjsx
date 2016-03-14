@@ -23,10 +23,11 @@ class DecklistCard extends React.Component
 			count = <span className="count">{@props.count}</span>
 			bgCls += " number"
 
+		cardName = @props.replay.cardUtils.localizeName(@props.replay.cardUtils.getCard(@props.card.id))
 		costSrc = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/mana/#{@props.card.cost}.png"
 		return 	<div className={cls} data-tip={link} data-html={true} data-place="right" data-effect="solid" data-delay-show="100" data-class="card-tooltip">
 					<img src={costSrc} className="cost"></img>
-					<span className="name">{@props.card.name}</span>
+					<span className="name">{cardName}</span>
 					<span className={bgCls} style={style}>
 						<div></div>
 					</span>
