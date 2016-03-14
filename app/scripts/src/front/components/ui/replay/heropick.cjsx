@@ -19,13 +19,16 @@ class HeroPick extends React.Component
 	render: ->
 		return null unless @props.replay.currentPick is 0 and @heroCards
 
+		console.log 'detectedHeroes', @props.replay.detectedHeroes
+
 		heroCards = @heroCards
 		picked = @props.replay.pickedHero
 		cards = @props.replay.detectedHeroes.slice(0, 3).map (entity) =>
 			card = _.filter heroCards, (o) -> 
-				o.playerClass.toLowerCase() == entity.toLowerCase()
-			card = card[0]
-			<Card card={card} key={card.id} className="hero-card" isPicked={entity == picked} />
+				entity and o.playerClass.toLowerCase() == entity.toLowerCase()
+			if card.length > 0
+				card = card[0]
+				<Card card={card} key={card.id} className="hero-card" isPicked={entity == picked} />
 
 		return <ReactCSSTransitionGroup component="div" className="pick"
 					transitionName="animate" transitionEnterTimeout={700}

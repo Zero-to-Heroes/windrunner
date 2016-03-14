@@ -20,6 +20,9 @@ class ReplayPlayer extends EventEmitter
 
 	init: ->
 		@currentPick = -1
+		if (!@detectedHeroes?[0])
+			@currentPick = 0
+		console.log 'detected heroes, currentPick', @detectedHeroes, @currentPick
 
 		# Go to the fisrt action - hero selection
 		@goNextPick()
@@ -39,7 +42,8 @@ class ReplayPlayer extends EventEmitter
 		@currentPick = Math.min(@currentPick + 1, 30)
 
 	goPreviousPick: ->
-		@currentPick = Math.max(@currentPick - 1, 0)
+		minPick = if @detectedHeroes?[0] then 0 else 1
+		@currentPick = Math.max(@currentPick - 1, minPick)
 
 	decoratePicks: (text) ->
 		console.log 'decorating picks', text
@@ -94,18 +98,20 @@ class ReplayPlayer extends EventEmitter
 			return o.type == 'Hero' and o.playerClass and o.set == 'Basic'
 
 		pickedHero = @pickedHero
-		pickedCard = _.filter heroCards, (o) -> 
-			o.playerClass.toLowerCase() == pickedHero.toLowerCase()
+		if pickedHero
+			pickedCard = _.filter heroCards, (o) -> 
+				o.playerClass.toLowerCase() == pickedHero.toLowerCase()
 
-		playerInfo = {
-			player: {
-				'class': pickedCard[0]?.playerClass?.toLowerCase()
+			playerInfo = {
+				player: {
+					'class': pickedCard[0]?.playerClass?.toLowerCase()
+				}
 			}
-		}
 		
 		return playerInfo
 
 	isValid: ->
+		console.log 'is valid?', @detectedCards?.length > 0, @pickedCards?.length > 0, @pickedHero?.length > 0
 		return @detectedCards?.length > 0 and @pickedCards?.length > 0 and @pickedHero?.length > 0
 
 module.exports = ReplayPlayer
