@@ -33,9 +33,13 @@ class DeckList extends React.Component
 
 			# Now sort that array
 			console.log 'sorting deck list', cards
+			pad = @pad
 			sorted = _.sortBy cards, (item) ->
-				return [item.entity.cost, item.entity.name]
-			console.log '\tsorted', sorted
+				# console.log '\tsorting array', item.entity.name, parseInt(item.entity.cost), pad(parseInt(item.entity.cost), 2), [pad(parseInt(item.entity.cost), 2), item.entity.name]
+				# http://stackoverflow.com/questions/24111535/how-can-i-use-lodash-underscore-to-sort-by-multiple-nested-fields
+				# Converts to string, then sort
+				return [pad(parseInt(item.entity.cost), 2), item.entity.name]
+			# console.log '\tsorted', sorted
 
 			cardImages = sorted.map (card) ->
 				<DecklistCard replay={replay} card={card.entity} key={card.entity.id} count={card.number} />
@@ -43,5 +47,15 @@ class DeckList extends React.Component
 		return 	<div className="decklist">
 					{cardImages}
 				</div>
+
+	pad: (n, width, z) ->
+		# console.log '\t\tpadding', n, width, z
+		z = z || '0'
+		# console.log '\t\tz', z
+		n = n + ''
+		# console.log '\t\tn', n
+		# console.log '\t\tresult', n.length >= width, n, (new Array(width - n.length + 1).join(z) + n), if n.length >= width then n else (new Array(width - n.length + 1).join(z) + n)
+		return if n.length >= width then n else new Array(width - n.length + 1).join(z) + n
+
 
 module.exports = DeckList

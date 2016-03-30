@@ -16,7 +16,6 @@ class CardPick extends React.Component
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1].Item3
 
 		picked = @props.replay.pickedCards[@props.replay.currentPick - 1]
-		console.log 'detectedCards', detectedCards, picked
 
 		cards = detectedCards.slice(0, 3).map (entity) =>
 			card = _.filter @props.replay.cardUtils.jsonDatabase, (o) -> 

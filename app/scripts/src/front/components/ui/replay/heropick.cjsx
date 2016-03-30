@@ -19,8 +19,6 @@ class HeroPick extends React.Component
 	render: ->
 		return null unless @props.replay.currentPick is 0 and @heroCards
 
-		console.log 'detectedHeroes', @props.replay.detectedHeroes
-
 		heroCards = @heroCards
 		picked = @props.replay.pickedHero
 		cards = @props.replay.detectedHeroes.slice(0, 3).map (entity) =>

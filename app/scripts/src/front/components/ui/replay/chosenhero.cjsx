@@ -20,8 +20,6 @@ class ChosenHero extends React.Component
 				o.playerClass.toLowerCase() == replay.pickedHero.toLowerCase()
 		card = card[0]
 
-		console.log 'rendering hero', replay.pickedHero, card
-
 		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/#{card.cardImage}"
 
 		style =

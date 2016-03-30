@@ -30,7 +30,6 @@ class Replay extends React.Component
 		console.log 'replay unmounted'
 
 	render: ->
-		console.log 'rendering'
 		replay = @state.replay
 
 		cls = "arena-replay"
