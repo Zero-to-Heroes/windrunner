@@ -8,7 +8,7 @@ class ChosenHero extends React.Component
 	componentDidMount: ->
 		cards = @props.replay.cardUtils.jsonDatabase
 		@heroCards = _.filter cards, (o) -> 
-			return o.type == 'Hero' and o.playerClass and o.set == 'Basic'
+			return o.type == 'Hero' and o.playerClass and o.set == 'Core'
 
 
 	render: ->
@@ -16,6 +16,7 @@ class ChosenHero extends React.Component
 
 		return null unless replay.pickedHero and replay.currentPick > 0
 
+		console.log 'rendering hero', replay.pickedHero
 		card = _.filter @heroCards, (o) -> 
 				o.playerClass.toLowerCase() == replay.pickedHero.toLowerCase()
 		card = card[0]
