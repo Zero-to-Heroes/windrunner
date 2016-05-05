@@ -90,7 +90,7 @@ class ReplayPlayer extends EventEmitter
 
 	getPlayerInfo: ->
 		heroCards = _.filter @cardUtils.jsonDatabase, (o) -> 
-			return o.type == 'Hero' and o.playerClass and o.set == 'Basic'
+			return o.type == 'Hero' and o.playerClass and o.set == 'Core'
 
 		pickedHero = @pickedHero
 		if pickedHero
