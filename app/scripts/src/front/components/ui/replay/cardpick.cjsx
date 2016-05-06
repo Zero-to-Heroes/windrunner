@@ -14,13 +14,15 @@ class CardPick extends React.Component
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1].Item1
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1].Item2
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1].Item3
+		# console.log 'detected cards', detectedCards
 
 		picked = @props.replay.pickedCards[@props.replay.currentPick - 1]
 
 		cards = detectedCards.slice(0, 3).map (entity) =>
-			card = _.filter @props.replay.cardUtils.jsonDatabase, (o) -> 
-				o.id == entity
-			card = card[0]
+			# card = _.filter @props.replay.cardUtils.jsonDatabase, (o) -> 
+			# 	o.id == entity || o.name == entity
+			card = @props.replay.cardUtils.getCard entity
+			# card = card[0]
 			<Card card={card} key={card.id} isPicked={entity == picked} />
 
 		return <div className="pick">
