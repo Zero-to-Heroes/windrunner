@@ -10,7 +10,7 @@ class HeroPick extends React.Component
 		heroes = @props.replay.detectedHeroes
 		cards = @props.replay.cardUtils.jsonDatabase
 		@heroCards = _.filter cards, (o) -> 
-			return o.type == 'Hero' and o.playerClass and o.set == 'Basic'
+			return o.type == 'Hero' and o.playerClass and o.set == 'Core'
 		console.log 'hero cards', @heroCards
 
 		@forceUpdate()

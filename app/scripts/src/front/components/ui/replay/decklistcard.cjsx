@@ -21,7 +21,8 @@ class DecklistCard extends React.Component
 		bgCls = "bg"
 		if @props.count > 1
 			count = <span className="count">{@props.count}</span>
-			bgCls += " number"
+			# bgCls += ""
+			cls += " number"
 
 		cardName = @props.replay.cardUtils.localizeName(@props.replay.cardUtils.getCard(@props.card.id))
 		costSrc = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/mana/#{@props.card.cost}.png"

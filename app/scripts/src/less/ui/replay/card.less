@@ -1,17 +1,53 @@
 .game-card {
-	width: 96px;
-	height: 143px;
-	background: url(../../image/cardback.jpg) top left no-repeat;
-	background-size: 96px auto;
-	display: block;
-	line-height: 95px;
-	text-align: center;
-	font-size: 20px;
 	position: relative;
-	transform: translate(0);
-}
+	display: inline-block;
+	background-size: 100% auto;
 
+	&::before {
+		content: "";
+		padding-top: 148%;
+		position: relative;
+		display: block; 	
+	}	
 
-.card--chosen {
-	opacity: 0.5;
+	.art {
+		// background: url(images/hero_power.png) center center no-repeat;
+		width: 100%;
+		position: absolute;
+		background-size: contain;
+		background-repeat: no-repeat;
+		bottom: 0;
+		right: 0;
+
+		&::before {
+			content: "";
+			padding-top: 148%;
+			position: relative;
+			display: block; 	
+		}	
+	}
+
+	// &:last-child {
+	// 	margin-right: 0;
+	// }
+
+	&.hero-card {
+		background-size: 100% auto;
+
+		&:before {
+			padding-top: 100%;
+		}
+
+		.art {
+			background-size: 205%;
+			background-position: 50% 24%;
+			border-radius: 0;
+			border-top-left-radius: 60% 70%;
+			border-top-right-radius: 60% 70%;
+
+			&:before {
+				padding-top: 100%;
+			}
+		}
+	}
 }

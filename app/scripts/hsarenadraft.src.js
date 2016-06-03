@@ -16,6 +16,7 @@ var hsarenadraft = {
 	},
 
 	loadReplay: function(jsonReplay) {
+		console.log('loading replay for arenadraft')
 		var bundle = require('./js/src/front/bundle.js')
 		bundle.init(jsonReplay)
 

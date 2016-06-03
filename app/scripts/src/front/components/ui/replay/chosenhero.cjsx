@@ -16,7 +16,7 @@ class ChosenHero extends React.Component
 
 		return null unless replay.pickedHero and replay.currentPick > 0
 
-		console.log 'rendering hero', replay.pickedHero
+		# console.log 'rendering hero', replay.pickedHero
 		card = _.filter @heroCards, (o) -> 
 				o.playerClass.toLowerCase() == replay.pickedHero.toLowerCase()
 		card = card[0]
@@ -24,14 +24,17 @@ class ChosenHero extends React.Component
 		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/#{card.cardImage}"
 
 		style =
-			background: "url(#{art}) top left no-repeat"
-			backgroundSize: '100% auto'
+			backgroundImage: "url(#{art})"
 		cls = "hero-card game-card"
 
 		if @props.className
 			cls += " " + @props.className
 
-		return 	<div className={cls} style={style}></div>
+		return  <div className="chosen-hero">
+			<div className={cls}>
+				<div className="art" style={style}></div>
+			</div>
+		</div>
 
 
 module.exports = ChosenHero

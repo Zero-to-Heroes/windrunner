@@ -20,7 +20,8 @@ class Card extends React.Component
 
 
 		link = '<img src="' + art + '">';
-		return <div className={cls} style={style} data-tip={link} data-html={true} data-place="right" data-effect="solid" data-delay-show="100" data-class="card-tooltip">
+		return <div className={cls} data-tip={link} data-html={true} data-place="right" data-effect="solid" data-delay-show="100" data-class="card-tooltip">
+			<div className="art" style={style}></div>
 			{overlay}
 		</div>
 

@@ -18,16 +18,22 @@ class Replay extends React.Component
 	constructor: (props) ->
 		super(props)
 		@state = replay: new ReplayPlayer(props.route.replay)
+		@state.style = {}
 
 	componentDidMount: ->
 		subscribe @state.replay, 'replay-ready', =>
 			@forceUpdate()
 
+		window.addEventListener 'resize', @updateDimensions
+		@updateDimensions()
+
 		@state.replay.init()
 
-
-	componentWillUnmount: ->
-		console.log 'replay unmounted'
+	updateDimensions: =>
+		if this.refs['root']
+			@state.style.fontSize = this.refs['root'].offsetWidth / 50.0 + 'px'
+			console.log 'built style', @state.style
+			@forceUpdate()
 
 	render: ->
 		replay = @state.replay
@@ -38,7 +44,7 @@ class Replay extends React.Component
 		else
 			cls += " pick-selection"
 
-		return <div className={cls}>
+		return <div ref="root" className={cls} style={@state.style}>
 					<ReactTooltip />
 					<div className="pick-area">
 						<HeroPick replay={replay}/>
@@ -47,10 +53,12 @@ class Replay extends React.Component
 					<DeckList replay={replay} />
 					<ChosenHero replay={replay} />
 					<ManaCurve replay={replay} />
-					<div className="controls">
-						<Button glyph="to-start" onClick={@goPreviousPick}/>
-						<span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
-						<Button glyph="to-end" onClick={@goNextPick}/>
+					<div className="controls-container">
+						<div className="controls">
+							<Button glyph="to-start" onClick={@goPreviousPick}/>
+							<Button glyph="to-end" onClick={@goNextPick}/>
+							<span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
+						</div>
 					</div>
 				</div>
 

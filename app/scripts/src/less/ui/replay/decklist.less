@@ -1,10 +1,10 @@
 .decklist {
 	position: absolute;
-	width: 146px;
-	right: 10px;
-	top: 34px;
-	bottom: 10px;
-	overflow: auto;
+    width: 21%;
+    right: 1%;
+    top: 7%;
+    bottom: 1%;
+    overflow: auto;
 
 	// Could do something a bit fancy later on
 	&::-webkit-scrollbar {
@@ -12,46 +12,45 @@
 	}
 
 	.decklist-card {
-		height: 24px;
-		width: 100%;
-		margin-top: 5px;
-		background: #303030;
-		border-radius: 6px;
-		box-shadow: 0 1px 3px #000;
-		position: relative;
+	    height: 5%;
+	    width: 100%;
+	    margin-top: 2%;
+	    background: #303030;
+	    border-radius: 6px;
+	    box-shadow: 0 1px 3px #000;
+	    position: relative;
+    	display: flex;
 
 		.cost {
-			height: 24px;
+			height: 100%;
 		}
 
 		.name {
-			font-size: 14px;
-			height: 24px;
-			left: 26px;
-			line-height: 24px;
+			font-size: 1em;
+			// height: 24px;
+			// left: 26px;
+			// line-height: 24px;
 			overflow: hidden;
-			position: absolute;
+			// position: absolute;
 			text-overflow: ellipsis;
-			top: 0;
+			// top: 0;
 			white-space: nowrap;
 			z-index: 2;
-			display: block;
-			width: 125px;
+		    margin-top: auto;
+		    margin-bottom: auto;
+			// display: block;
+			// width: 125px;
 		}
 
 		.bg {
-			background-position: -65px -100px;
-			background-size: 255px auto;
-			width: 108px;
+			background-position: -125% -79%;
+			background-size: 255% auto;
+			width: 70%;
 			display: block;
 			height: 100%;
 			position: absolute;
 			right: 0;
 			top: 0;
-
-			&.number {
-				right: 	19px;
-			}
 
 			div {
 				background: linear-gradient(to right,rgba(61, 67, 79, 1) 0,rgba(61, 67, 79, 0.25) 50%,rgba(61, 67, 79, 0) 100%);
@@ -59,18 +58,26 @@
 			}
 		}
 
+		&.number {
+			.bg {
+				right: 	14%;
+			}
+			.name {
+    			width: 71%;
+			}
+
+		}
+
 		.count {
 			color: #ffe600;
 			display: block;
-			font-size: 17px;
+			font-size: 1.2em;
 			font-weight: bold;
-			height: 24px;
-			line-height: 24px;
 			position: absolute;
 			right: 0;
 			text-align: center;
 			top: 0;
-			width: 19px;
+			width: 14%;
 		}
 	}
 }
