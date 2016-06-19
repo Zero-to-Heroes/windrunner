@@ -60,7 +60,8 @@ class ReplayPlayer extends EventEmitter
 			find = match[0].trim()
 			if replaced.indexOf(find) == -1
 				turnNumber = match[2]
-				text = text.replace new RegExp(find, 'g'), '<a ng-click="mediaPlayer.goToTimestamp(\'' + turnNumber + '\')" class="ng-scope">' + find + '</a>'
+				# console.log 'replacing',  new RegExp(find + '(?!\\d)', 'g')
+				text = text.replace new RegExp(find + '(?!\\d)', 'g'), '<a ng-click="mediaPlayer.goToTimestamp(\'' + turnNumber + '\')" class="ng-scope">' + find + '</a>'
 				replaced.push find
 			match = pickRegex.exec(text)
 

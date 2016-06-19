@@ -1,7 +1,7 @@
 console.log('in replay')
 React = require 'react'
 ReactDOM = require 'react-dom'
-{ButtonGroup, Button} = require 'react-photonkit'
+# {ButtonGroup, Button} = require 'react-photonkit'
 ReplayPlayer = require '../../replay/replay-player'
 
 HeroPick = require './ui/replay/heropick'
@@ -55,9 +55,9 @@ class Replay extends React.Component
 					<ManaCurve replay={replay} />
 					<div className="controls-container">
 						<div className="controls">
-							<Button glyph="to-start" onClick={@goPreviousPick}/>
-							<Button glyph="to-end" onClick={@goNextPick}/>
-							<span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
+							 <button className="btn btn-default glyphicon glyphicon-step-backward" onClick={@goPreviousPick}/>
+							 <button className="btn btn-default glyphicon glyphicon-step-forward" onClick={@goNextPick}/>
+							 <span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
 						</div>
 					</div>
 				</div>

@@ -2,19 +2,20 @@
     position: absolute;
     top: 73%;
     left: 56%;
-    width: 10%;
-    height: 14%;
+    width: 80px;
+    height: 80px;
     display: flex;
     flex-wrap: wrap;
+    font-size: 14px;
 
 	.controls {
 	    display: flex;
 	    flex-wrap: wrap;
     	margin: auto;
+    	justify-content: center;	
 
 		.btn {
-			padding: 10% 18%;
-    		margin: auto;
+			padding: 10px;
 		}
 		
 		.pick-status {
@@ -23,3 +24,9 @@
 	}
 }
 
+@media screen and (max-width: 550px) {
+	.controls-container {
+	    top: 67%;
+	    left: 52%;
+	}
+}
