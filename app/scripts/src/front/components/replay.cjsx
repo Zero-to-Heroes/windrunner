@@ -55,9 +55,9 @@ class Replay extends React.Component
 					<ManaCurve replay={replay} />
 					<div className="controls-container">
 						<div className="controls">
-							 <button className="btn btn-default glyphicon glyphicon-step-backward" onClick={@goPreviousPick}/>
-							 <button className="btn btn-default glyphicon glyphicon-step-forward" onClick={@goNextPick}/>
-							 <span className="pick-status btn btn-default">p{replay.currentPick} / 30</span>
+							 <button className="btn btn-default btn-control glyphicon glyphicon-step-backward" onClick={@goPreviousPick}/>
+							 <button className="btn btn-default btn-control glyphicon glyphicon-step-forward" onClick={@goNextPick}/>
+							 <span className="btn btn-default btn-control">p{replay.currentPick} / 30</span>
 						</div>
 					</div>
 				</div>
