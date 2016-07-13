@@ -96,9 +96,9 @@ class ReplayPlayer extends EventEmitter
 
 		ids = []
 		for cards in @detectedCards
-			ids.push cards.Item1
-			ids.push cards.Item2
-			ids.push cards.Item3
+			ids.push cards?.Item1
+			ids.push cards?.Item2
+			ids.push cards?.Item3
 
 		for id in ids
 			images.push @cardUtils.buildFullCardImageUrl(@cardUtils.getCard(id))
@@ -124,6 +124,7 @@ class ReplayPlayer extends EventEmitter
 		return playerInfo
 
 	isValid: ->
+		console.log('file valid?', @detectedCards, @pickedCards, @pickedHero)
 		return @detectedCards?.length > 0 and @pickedCards?.length > 0 and @pickedHero?.length > 0
 
 module.exports = ReplayPlayer
