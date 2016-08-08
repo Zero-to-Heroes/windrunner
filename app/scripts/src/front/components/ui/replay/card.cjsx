@@ -15,7 +15,7 @@ class Card extends React.Component
 		if @props.className
 			cls += " " + @props.className
 
-		if @props.isPicked
+		if @props.isPicked and @props.showPick
 			overlay = <span className="glyphicon glyphicon-ok picked"></span>
 
 

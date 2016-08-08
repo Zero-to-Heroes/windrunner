@@ -47,17 +47,20 @@ class Replay extends React.Component
 		return <div ref="root" className={cls} style={@state.style}>
 					<ReactTooltip />
 					<div className="pick-area">
-						<HeroPick replay={replay}/>
-						<CardPick replay={replay} />
+						<HeroPick replay={replay} />
+						<CardPick replay={replay} showPick={@showPick} />
+						<label className="show-pick">
+							<input type="checkbox" checked={@showPick} onChange={@onShowPickChange} />Show pick
+						</label>
 					</div>
 					<DeckList replay={replay} />
 					<ChosenHero replay={replay} />
 					<ManaCurve replay={replay} />
 					<div className="controls-container">
 						<div className="controls">
-							 <button className="btn btn-default btn-control glyphicon glyphicon-step-backward" onClick={@goPreviousPick}/>
-							 <button className="btn btn-default btn-control glyphicon glyphicon-step-forward" onClick={@goNextPick}/>
-							 <span className="pick-status btn btn-default btn-control">p{replay.currentPick} / 30</span>
+							<button className="btn btn-default btn-control glyphicon glyphicon-step-backward" onClick={@goPreviousPick}/>
+							<button className="btn btn-default btn-control glyphicon glyphicon-step-forward" onClick={@goNextPick}/>
+							<span className="pick-status btn btn-default btn-control">p{replay.currentPick} / 30</span>
 						</div>
 					</div>
 				</div>
@@ -70,6 +73,10 @@ class Replay extends React.Component
 	goPreviousPick: (e) =>
 		e.preventDefault()
 		@state.replay.goPreviousPick()
+		@forceUpdate()
+
+	onShowPickChange: =>
+		@showPick = !@showPick
 		@forceUpdate()
 
 module.exports = Replay

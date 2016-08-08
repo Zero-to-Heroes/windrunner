@@ -17,6 +17,7 @@ class CardPick extends React.Component
 		# console.log 'detected cards', detectedCards
 
 		picked = @props.replay.pickedCards[@props.replay.currentPick - 1]
+		showPick = @props.showPick
 
 		cards = detectedCards.slice(0, 3).map (entity) =>
 			# card = _.filter @props.replay.cardUtils.jsonDatabase, (o) -> 
@@ -24,7 +25,7 @@ class CardPick extends React.Component
 			card = @props.replay.cardUtils.getCard entity
 			# card = card[0]
 			if card
-				<Card card={card} key={card.id} isPicked={entity == picked} />
+				<Card card={card} key={card.id} isPicked={entity == picked} showPick={showPick} />
 
 		return <div className="pick">
 				{cards}
