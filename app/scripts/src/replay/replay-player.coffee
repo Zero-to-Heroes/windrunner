@@ -46,37 +46,41 @@ class ReplayPlayer extends EventEmitter
 		@currentPick = Math.max(@currentPick - 1, minPick)
 
 	decoratePicks: (text) ->
-		pickRegex = /(p|P|pick|Pick|pick |Pick )(\d?\d)(:|\s|,|\.|$)/gm
+		# https://regex101.com/r/zX2gF9/1
+		pickRegex = /(?:p(?:ick )?|P(?:ick )?)(\d?\d)(?::|\s|,|\.|$)/gm
 
 		# console.log 'decorating pick', text
 
-		that = this
-		match = pickRegex.exec(text)
-		# console.log 'atch regex', match
-		replaced = []
+		# that = this
+		# match = pickRegex.exec(text)
+		# # console.log 'atch regex', match
+		# replaced = []
 
-		while (match) 
-			# console.log 'match', match
-			find = match[0].trim()
-			if replaced.indexOf(find) == -1
-				turnNumber = match[2]
-				# console.log 'replacing',  new RegExp(find + '(?!\\d)', 'g')
-				text = text.replace new RegExp(find + '(?!\\d)', 'g'), '<a ng-click="mediaPlayer.goToTimestamp(\'' + turnNumber + '\')" class="ng-scope">' + find + '</a>'
-				replaced.push find
+		# while (match) 
+		# 	# console.log 'match', match
+		# 	find = match[0].trim()
+		# 	if replaced.indexOf(find) == -1
+		# 		turnNumber = match[2]
+		# 		# console.log 'replacing',  new RegExp(find + '(?!\\d)', 'g')
+		# 		text = text.replace new RegExp(find + '(?!\\d)', 'g'), '<a ng-click="mediaPlayer.goToTimestamp(\'' + turnNumber + '\')" class="ng-scope">' + find + '</a>'
+		# 		replaced.push find
+		# 	match = pickRegex.exec(text)
+
+
+		that = this
+
+		match = pickRegex.exec(text)
+		while match
+			# console.log '\tmatched!!!', match[1], match
+			# console.log 'replaced substring', text.substring(match.index, match.index + match[0].length)
+			pickNumber = parseInt(match[1])
+			replaceString = '<a ng-click="mediaPlayer.goToTimestamp(\'' + pickNumber + '\')" class="ng-scope">' + match[0] + '</a>'
+			text = text.substring(0, match.index + match[1].length - 1) + replaceString + text.substring(match.index + match[0].length)
+			# Approximate length of the new chain
+			pickRegex.lastIndex += 60
 			match = pickRegex.exec(text)
 
-		# matches = text.match(pickRegex)
 
-		# if matches and matches.length > 0
-		# 	console.log 'matches is', matches
-		# 	noDupesMatch = _.uniq matches
-		# 	noDupesMatch.forEach (match) ->
-		# 		console.log 'match is', match
-		# 		find = match.trim()
-
-		# 		text = text.replace match, '<a ng-click="mediaPlayer.goToTimestamp(\'' + find + '\')" class="ng-scope">' + match + '</a>'
-
-		# console.log 'modified text', text
 		return text
 
 	moveToPick: (pick) ->
@@ -126,5 +130,9 @@ class ReplayPlayer extends EventEmitter
 	isValid: ->
 		console.log('file valid?', @detectedCards, @pickedCards, @pickedHero)
 		return @detectedCards?.length > 0 and @pickedCards?.length > 0 and @pickedHero?.length > 0
+
+
+	getCurrentPick: ->
+		return 'p' + @currentPick
 
 module.exports = ReplayPlayer

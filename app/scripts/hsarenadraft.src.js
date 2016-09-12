@@ -34,6 +34,15 @@ var hsarenadraft = {
 
 	isValid: function() {
 		return window.replay_hsarenadraft.isValid()
+	},
+
+	onTurnChanged: function(callback) {
+		// Do nothing for now
+
+	},
+
+	getCurrentTimestamp: function() {
+		return window.replay_hsarenadraft.getCurrentPick().toLowerCase()
 	}
 }
 
