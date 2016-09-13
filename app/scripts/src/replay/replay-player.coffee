@@ -49,7 +49,7 @@ class ReplayPlayer extends EventEmitter
 		# https://regex101.com/r/zX2gF9/1
 		pickRegex = /(?:p(?:ick )?|P(?:ick )?)(\d?\d)(?::|\s|,|\.|$)/gm
 
-		# console.log 'decorating pick', text
+		console.log 'decorating pick', text
 
 		# that = this
 		# match = pickRegex.exec(text)
@@ -70,14 +70,16 @@ class ReplayPlayer extends EventEmitter
 		that = this
 
 		match = pickRegex.exec(text)
+		console.log 'match', match
 		while match
-			# console.log '\tmatched!!!', match[1], match
-			# console.log 'replaced substring', text.substring(match.index, match.index + match[0].length)
+			console.log '\tmatched!!!', match[1], match
+			console.log 'replaced substring', text.substring(match.index, match.index + match[0].length)
 			pickNumber = parseInt(match[1])
 			replaceString = '<a ng-click="mediaPlayer.goToTimestamp(\'' + pickNumber + '\')" class="ng-scope">' + match[0] + '</a>'
-			text = text.substring(0, match.index + match[1].length - 1) + replaceString + text.substring(match.index + match[0].length)
+			text = text.substring(0, match.index) + replaceString + text.substring(match.index + match[0].length)
 			# Approximate length of the new chain
-			pickRegex.lastIndex += 60
+			console.log 'replace string length', replaceString.length
+			pickRegex.lastIndex += replaceString.length
 			match = pickRegex.exec(text)
 
 
