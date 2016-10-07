@@ -6,7 +6,7 @@ class ReplayPlayer extends EventEmitter
 	constructor: (data) ->
 		EventEmitter.call(this)
 
-		window.replay_hsarenadraft = this
+		window.windrunner = this
 
 		@detectedHeroes = data.detectedheroes
 		@pickedHero = data.pickedhero

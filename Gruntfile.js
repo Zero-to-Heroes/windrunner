@@ -15,6 +15,8 @@ module.exports = function (grunt) {
 	// Time how long tasks take. Can help when optimizing build times
 	require('time-grunt')(grunt);
 
+	var serveStatic = require('serve-static')
+
 	// Configurable paths for the application
 	var appConfig = {
 		app: 'app',
@@ -59,19 +61,19 @@ module.exports = function (grunt) {
 		browserify: {
 			options: {
 				browserifyOptions: {
-					standalone: 'hsarenadraft'
+					standalone: 'windrunner'
 				},
 				plugin: [
 					[ "browserify-derequire" ]
 				]
 			},
-			'<%= yeoman.app %>/scripts/out/hsarenadraft.js': ['<%= yeoman.app %>/scripts/hsarenadraft.src.js']
+			'<%= yeoman.app %>/scripts/out/windrunner.js': ['<%= yeoman.app %>/scripts/windrunner.src.js', '<%= yeoman.app %>/scripts/js/**/*.js']
 		},
 
 		less: {
 			development: {
 				files: {
-					"<%= yeoman.app %>/scripts/out/hsarenadraft.css": '<%= yeoman.app %>/scripts/src/less/styles.less'
+					"<%= yeoman.app %>/scripts/out/windrunner.css": '<%= yeoman.app %>/scripts/src/less/styles.less'
 				}
 			}
 		},
@@ -79,7 +81,7 @@ module.exports = function (grunt) {
 		uglify: {
 			dist: {
 				files: {
-					'<%= yeoman.app %>/scripts/out/dist/hsarenadraft.js': ['<%= yeoman.app %>/scripts/out/hsarenadraft.js']
+					'<%= yeoman.app %>/scripts/out/dist/windrunner.js': ['<%= yeoman.app %>/scripts/out/windrunner.js']
 				}
 			}
 		},
@@ -91,12 +93,18 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				files: {
-					'<%= yeoman.app %>/scripts/out/dist/hsarenadraft.css': ['<%= yeoman.app %>/scripts/out/hsarenadraft.css']
+					'<%= yeoman.app %>/scripts/out/dist/windrunner.css': ['<%= yeoman.app %>/scripts/out/windrunner.css']
 				}
 			}
 		},
 
 		copy: {
+			static: {
+				expand: true,
+				cwd: '<%= yeoman.app %>/scripts/static/',
+				src: '**/*',
+				dest: '<%= yeoman.app %>/scripts/out'
+			},
 			main: {
 				expand: true,
 				src: '<%= yeoman.app %>/scripts/out/dist/*',
@@ -109,6 +117,40 @@ module.exports = function (grunt) {
 				dest: 'G:\\Source\\coaching\\yo\\app\\plugins\\hsarenadraft/',
 				flatten: true
 			}
+		},
+
+		watch: {
+		  	js: {
+				files: ['<%= yeoman.app %>/**/*.js'],
+				options: {
+			  		livereload: '<%= connect.options.livereload %>'
+				}
+		  	},
+		  	livereload: {
+				options: {
+			  		livereload: '<%= connect.options.livereload %>'
+				},
+				files: [
+			  		'<%= yeoman.app %>/**/*.html'
+				]
+		  	}
+		},
+
+		// The actual grunt server settings
+		connect: {
+		  	options: {
+				port: 9001,
+				base: '<%= yeoman.app %>',
+				// Change this to '0.0.0.0' to access the server from outside.
+				hostname: '0.0.0.0',
+				livereload: 35729
+		  	},
+		  	livereload: {
+				options: {
+				  	open: true,
+					base: '<%= yeoman.app %>'
+				}
+		  	}
 		}
 	});
 
@@ -124,11 +166,23 @@ module.exports = function (grunt) {
 		'copy:main'
 	]);
 
-	grunt.registerTask('dev', [
+
+	grunt.registerTask('build-dev', [
 		'less',
 		'coffee',
 		'cjsx',
 		'browserify',
+		'copy:static'
+	]);
+
+	grunt.registerTask('dev', [
+		'build-dev',
 		'copy:dev'
+	]);
+
+	grunt.registerTask('serve', [
+		'build-dev',
+		'connect:livereload',
+		'watch'
 	]);
 };

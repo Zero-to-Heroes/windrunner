@@ -1,18 +1,18 @@
-var hsarenadraft = {
+var windrunner = {
 
 	execute: function(review, text) {
 		if (!text) return ''
-		if (!window.replay_hsarenadraft) return text
+		if (!window.windrunner) return text
 
 		// Decorate the "pick numbers" to create links
-		text = window.replay_hsarenadraft.decoratePicks(text)
+		text = window.windrunner.decoratePicks(text)
 
 		return text
 	},
 
 	init: function(config, review) {
 		var replayXml = review.replayXml
-		hsarenadraft.loadReplay(replayXml)
+		windrunner.loadReplay(replayXml)
 	},
 
 	loadReplay: function(jsonReplay) {
@@ -20,20 +20,20 @@ var hsarenadraft = {
 		var bundle = require('./js/src/front/bundle.js')
 		bundle.init(jsonReplay)
 
-		window.replay_hsarenadraft.cardUtils = window['parseCardsText']
+		window.windrunner.cardUtils = window['parseCardsText']
 	},
 
 	goToTimestamp: function(pick) {
-		window.replay_hsarenadraft.moveToPick(pick)
+		window.windrunner.moveToPick(pick)
 	},
 
 	getPlayerInfo: function() {
 		console.log('retrieving player info')
-		return window.replay_hsarenadraft.getPlayerInfo()
+		return window.windrunner.getPlayerInfo()
 	},
 
 	isValid: function() {
-		return window.replay_hsarenadraft.isValid()
+		return window.windrunner.isValid()
 	},
 
 	onTurnChanged: function(callback) {
@@ -42,8 +42,8 @@ var hsarenadraft = {
 	},
 
 	getCurrentTimestamp: function() {
-		return window.replay_hsarenadraft.getCurrentPick().toLowerCase()
+		return window.windrunner.getCurrentPick().toLowerCase()
 	}
 }
 
-module.exports = hsarenadraft;
+module.exports = windrunner;
