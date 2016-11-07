@@ -1,11 +1,14 @@
 var windrunner = {
 
 	execute: function(review, text) {
+		console.log('executing', text, window.windrunner_impl)
 		if (!text) return ''
-		if (!window.windrunner) return text
+		if (!window.windrunner_impl) return text
 
 		// Decorate the "pick numbers" to create links
-		text = window.windrunner.decoratePicks(text)
+		console.log('alles gut alles klar')
+		text = window.windrunner_impl.decoratePicks(text)
+		console.log('text decorated', text)
 
 		return text
 	},
@@ -20,29 +23,29 @@ var windrunner = {
 		var bundle = require('./js/src/front/bundle.js')
 		bundle.init(jsonReplay)
 
-		window.windrunner.cardUtils = window['parseCardsText']
+		window.windrunner_impl.cardUtils = window['parseCardsText']
 	},
 
 	goToTimestamp: function(pick) {
-		window.windrunner.moveToPick(pick)
-	},
-
-	getPlayerInfo: function() {
-		console.log('retrieving player info')
-		return window.windrunner.getPlayerInfo()
-	},
-
-	isValid: function() {
-		return window.windrunner.isValid()
+		window.windrunner_impl.moveToPick(pick)
 	},
 
 	onTurnChanged: function(callback) {
-		// Do nothing for now
-
+		window.windrunner_impl.onTurnChanged = function(turn) {
+			callback(turn)
+		}
 	},
 
 	getCurrentTimestamp: function() {
-		return window.windrunner.getCurrentPick().toLowerCase()
+		return window.windrunner_impl.getCurrentPick().toLowerCase()
+	},
+
+	getPlayerInfo: function() {
+		return window.windrunner_impl.getPlayerInfo()
+	},
+
+	isValid: function() {
+		return window.windrunner_impl.isValid()
 	}
 }
 

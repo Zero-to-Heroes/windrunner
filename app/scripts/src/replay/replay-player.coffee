@@ -6,7 +6,7 @@ class ReplayPlayer extends EventEmitter
 	constructor: (data) ->
 		EventEmitter.call(this)
 
-		window.windrunner = this
+		window.windrunner_impl = this
 
 		@detectedHeroes = data.detectedheroes
 		@pickedHero = data.pickedhero
@@ -40,45 +40,27 @@ class ReplayPlayer extends EventEmitter
 	# ========================
 	goNextPick: ->
 		@currentPick = Math.min(@currentPick + 1, 30)
+		@notifyChangePick()
 
 	goPreviousPick: ->
 		minPick = if @detectedHeroes?[0] then 0 else 1
 		@currentPick = Math.max(@currentPick - 1, minPick)
+		@notifyChangePick()
 
 	decoratePicks: (text) ->
 		# https://regex101.com/r/zX2gF9/1
 		pickRegex = /(?:p(?:ick )?|P(?:ick )?)(\d?\d)(?::|\s|,|\.|$)/gm
 
 		console.log 'decorating pick', text
-
-		# that = this
-		# match = pickRegex.exec(text)
-		# # console.log 'atch regex', match
-		# replaced = []
-
-		# while (match) 
-		# 	# console.log 'match', match
-		# 	find = match[0].trim()
-		# 	if replaced.indexOf(find) == -1
-		# 		turnNumber = match[2]
-		# 		# console.log 'replacing',  new RegExp(find + '(?!\\d)', 'g')
-		# 		text = text.replace new RegExp(find + '(?!\\d)', 'g'), '<a ng-click="mediaPlayer.goToTimestamp(\'' + turnNumber + '\')" class="ng-scope">' + find + '</a>'
-		# 		replaced.push find
-		# 	match = pickRegex.exec(text)
-
-
 		that = this
 
 		match = pickRegex.exec(text)
-		console.log 'match', match
 		while match
-			console.log '\tmatched!!!', match[1], match
-			console.log 'replaced substring', text.substring(match.index, match.index + match[0].length)
+			console.log 'match!', match
 			pickNumber = parseInt(match[1])
 			replaceString = '<a ng-click="mediaPlayer.goToTimestamp(\'' + pickNumber + '\')" class="ng-scope">' + match[0] + '</a>'
 			text = text.substring(0, match.index) + replaceString + text.substring(match.index + match[0].length)
 			# Approximate length of the new chain
-			console.log 'replace string length', replaceString.length
 			pickRegex.lastIndex += replaceString.length
 			match = pickRegex.exec(text)
 
@@ -88,6 +70,7 @@ class ReplayPlayer extends EventEmitter
 	moveToPick: (pick) ->
 		pickNumber = parseInt(pick)
 		@currentPick = pickNumber
+		@notifyChangePick()
 		@emit 'replay-ready'
 
 	preloadPictures: (arrayOfImages) ->
@@ -136,5 +119,11 @@ class ReplayPlayer extends EventEmitter
 
 	getCurrentPick: ->
 		return 'p' + @currentPick
+
+	notifyChangePick: (inputPick) ->
+		pickNumber = inputPick || @currentPick
+		pickNumber = 'p' + pickNumber
+
+		@onTurnChanged? pickNumber
 
 module.exports = ReplayPlayer

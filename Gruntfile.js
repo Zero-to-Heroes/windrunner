@@ -20,7 +20,8 @@ module.exports = function (grunt) {
 	// Configurable paths for the application
 	var appConfig = {
 		app: 'app',
-		dist: 'dist'
+		dist: 'dist',
+		release: 'G:\\Source\\coaching\\yo\\app\\plugins\\windrunner/'
 	};
 
 	// Define the configuration for all the tasks
@@ -105,17 +106,25 @@ module.exports = function (grunt) {
 				src: '**/*',
 				dest: '<%= yeoman.app %>/scripts/out'
 			},
-			main: {
+			staticRelease: {
 				expand: true,
-				src: '<%= yeoman.app %>/scripts/out/dist/*',
-				dest: 'G:\\Source\\coaching\\yo\\app\\plugins\\hsarenadraft/',
-				flatten: true
+				cwd: '<%= yeoman.app %>/scripts/out/',
+				src: ['images/**/*', 'fonts/**/*'],
+				dest: '<%= yeoman.release %>'
 			},
-			dev: {
+			mainRelease: {
 				expand: true,
-				src: '<%= yeoman.app %>/scripts/out/*',
-				dest: 'G:\\Source\\coaching\\yo\\app\\plugins\\hsarenadraft/',
-				flatten: true
+				cwd: '<%= yeoman.app %>/scripts/out/dist',
+				src: '*',
+				filter: 'isFile',
+				dest: '<%= yeoman.release %>'
+			},
+			devRelease: {
+				expand: true,
+				cwd: '<%= yeoman.app %>/scripts/out/',
+				src: '*',
+				filter: 'isFile',
+				dest: '<%= yeoman.release %>'
 			}
 		},
 
@@ -163,7 +172,9 @@ module.exports = function (grunt) {
 		'browserify',
 		'uglify',
 		'cssmin',
-		'copy:main'
+		'copy:static',
+		'copy:staticRelease',
+		'copy:mainRelease'
 	]);
 
 
@@ -177,7 +188,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('dev', [
 		'build-dev',
-		'copy:dev'
+		'copy:staticRelease',
+		'copy:devRelease'
 	]);
 
 	grunt.registerTask('serve', [
