@@ -1,14 +1,13 @@
 var windrunner = {
 
 	execute: function(review, text) {
-		console.log('executing', text, window.windrunner_impl)
+		// console.log('executing', text, window.windrunner_impl)
 		if (!text) return ''
 		if (!window.windrunner_impl) return text
 
 		// Decorate the "pick numbers" to create links
-		console.log('alles gut alles klar')
 		text = window.windrunner_impl.decoratePicks(text)
-		console.log('text decorated', text)
+		// console.log('text decorated', text)
 
 		return text
 	},
@@ -19,7 +18,7 @@ var windrunner = {
 	},
 
 	loadReplay: function(jsonReplay) {
-		console.log('loading replay for arenadraft')
+		// console.log('loading replay for arenadraft')
 		var bundle = require('./js/src/front/bundle.js')
 		bundle.init(jsonReplay)
 

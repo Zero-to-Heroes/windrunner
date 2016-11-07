@@ -26,6 +26,8 @@ class ManaCurve extends React.Component
 				highestNumber = v
 				costWithHighest = k
 
+		highestNumber = Math.max highestNumber, 4
+
 		return 	<div className="mana-curve">
 					<div className="mana" style={ height: (costs[0] or 0) * 100.0 / highestNumber + '%' } data-tip={(costs[0] + ' cards') or 'no card'} data-place="right" data-effect="solid" data-delay-show="100" />
 					<div className="mana" style={ height: (costs[1] or 0) * 100.0 / highestNumber + '%' } data-tip={(costs[1] + ' cards') or 'no card'} data-place="right" data-effect="solid" data-delay-show="100" />
