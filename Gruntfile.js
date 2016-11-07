@@ -130,7 +130,7 @@ module.exports = function (grunt) {
 
 		watch: {
 		  	js: {
-				files: ['<%= yeoman.app %>/**/*.js'],
+				files: ['<%= yeoman.app %>/**/windrunner.js'],
 				options: {
 			  		livereload: '<%= connect.options.livereload %>'
 				}
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
 				base: '<%= yeoman.app %>',
 				// Change this to '0.0.0.0' to access the server from outside.
 				hostname: '0.0.0.0',
-				livereload: 35729
+				livereload: 35735
 		  	},
 		  	livereload: {
 				options: {

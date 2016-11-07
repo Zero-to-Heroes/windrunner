@@ -27,7 +27,14 @@ class Replay extends React.Component
 		window.addEventListener 'resize', @updateDimensions
 		@updateDimensions()
 
+		@bindKeypressHandlers()
+
 		@state.replay.init()
+
+	bindKeypressHandlers: =>
+		window.addEventListener 'keydown', (e) =>
+			if @mousingover
+				@handleKeyDown e
 
 	updateDimensions: =>
 		if this.refs['root']
@@ -44,13 +51,13 @@ class Replay extends React.Component
 		else
 			cls += " pick-selection"
 
-		return <div ref="root" className={cls} style={@state.style}>
+		return <div ref="root" className={cls} style={@state.style} onMouseEnter={@onMouseEnter} onMouseLeave={@onMouseLeave}>
 					<ReactTooltip />
 					<div className="pick-area">
-						<HeroPick replay={replay} />
+						<HeroPick replay={replay}/>
 						<CardPick replay={replay} showPick={@showPick} />
 						<label className="show-pick">
-							<input type="checkbox" checked={@showPick} onChange={@onShowPickChange} />Show pick
+							<input type="checkbox" checked={@showPick} onChange={@onShowPickChange} /><span className="underlined">S</span>how pick
 						</label>
 					</div>
 					<DeckList replay={replay} />
@@ -65,18 +72,41 @@ class Replay extends React.Component
 					</div>
 				</div>
 
+
+
+	handleKeyDown: (e) =>
+		# console.log 'keydown', e
+		switch e.code
+			when 'KeyS'
+				@onShowPickChange()
+			when 'ArrowRight'
+				@goNextPick()
+			when 'ArrowLeft'
+				@goPreviousPick()
+
+
+	onMouseEnter: (e) =>
+		# console.log 'mouse entered', e
+		@mousingover = true
+
+	onMouseLeave: (e) =>
+		# console.log 'mouse left', e
+		@mousingover = false
+
+
 	goNextPick: (e) =>
-		e.preventDefault()
+		e?.preventDefault()
 		@state.replay.goNextPick()
 		@forceUpdate()
 
 	goPreviousPick: (e) =>
-		e.preventDefault()
+		e?.preventDefault()
 		@state.replay.goPreviousPick()
 		@forceUpdate()
 
 	onShowPickChange: =>
 		@showPick = !@showPick
+		# console.log 'showpick', @showPick
 		@forceUpdate()
 
 module.exports = Replay
