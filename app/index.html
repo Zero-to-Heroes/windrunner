@@ -43,6 +43,13 @@
 				dataType: 'json',
 				success: function(response) {
 					windrunner.loadReplay(response)
+
+					if (window.location.search) {
+						var ts = window.location.search.split('?ts=')[1]
+						setTimeout(function() {
+							windrunner.goToTimestamp(ts)
+						})
+					}
 				}
 			})
 			// 

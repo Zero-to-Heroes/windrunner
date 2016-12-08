@@ -68,7 +68,10 @@ class ReplayPlayer extends EventEmitter
 		return text
 
 	moveToPick: (pick) ->
+		if pick.startsWith('p')
+			pick = pick.split('p')[1]
 		pickNumber = parseInt(pick)
+		console.log 'moving to pick', pickNumber, pick
 		@currentPick = pickNumber
 		@notifyChangePick()
 		@emit 'replay-ready'
