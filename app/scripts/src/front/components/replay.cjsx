@@ -20,7 +20,6 @@ class Replay extends React.Component
 		@state = replay: new ReplayPlayer(props.route.replay)
 		@state.style = {}
 
-	componentDidMount: ->
 		subscribe @state.replay, 'replay-ready', =>
 			@forceUpdate()
 
@@ -30,6 +29,9 @@ class Replay extends React.Component
 		@bindKeypressHandlers()
 
 		@state.replay.init()
+
+		if props.route.callback
+			props.route.callback()
 
 	bindKeypressHandlers: =>
 		window.addEventListener 'keydown', (e) =>

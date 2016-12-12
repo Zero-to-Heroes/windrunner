@@ -12,15 +12,15 @@ var windrunner = {
 		return text
 	},
 
-	init: function(config, review) {
+	init: function(config, review, callback) {
 		var replayXml = review.replayXml
-		windrunner.loadReplay(replayXml)
+		windrunner.loadReplay(replayXml, callback)
 	},
 
-	loadReplay: function(jsonReplay) {
+	loadReplay: function(jsonReplay, callback) {
 		// console.log('loading replay for arenadraft')
 		var bundle = require('./js/src/front/bundle.js')
-		bundle.init(jsonReplay)
+		bundle.init(jsonReplay, callback)
 
 		window.windrunner_impl.cardUtils = window['parseCardsText']
 	},
