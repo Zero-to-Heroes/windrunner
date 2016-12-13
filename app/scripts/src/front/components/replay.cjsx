@@ -39,10 +39,13 @@ class Replay extends React.Component
 				@handleKeyDown e
 
 	updateDimensions: =>
-		if this.refs['root']
+		if this.refs['root']?.offsetWidth > 10
 			@state.style.fontSize = this.refs['root'].offsetWidth / 50.0 + 'px'
 			console.log 'built style', @state.style
 			@forceUpdate()
+		else 
+			setTimeout @updateDimensions, 200
+			
 
 	render: ->
 		replay = @state.replay
