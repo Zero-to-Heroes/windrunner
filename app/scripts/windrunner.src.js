@@ -39,6 +39,14 @@ var windrunner = {
 		return window.windrunner_impl.getCurrentPick().toLowerCase()
 	},
 
+	getTurnLabel: function(turn) {
+		return window.windrunner_impl.getTurnLabel(turn)
+	},
+
+	getTurnNumber: function(label) {
+		return window.windrunner_impl.getTurnNumberFromLabel(label)
+	},
+
 	getPlayerInfo: function() {
 		return window.windrunner_impl.getPlayerInfo()
 	},

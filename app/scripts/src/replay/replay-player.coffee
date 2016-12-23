@@ -129,4 +129,22 @@ class ReplayPlayer extends EventEmitter
 
 		@onTurnChanged? pickNumber
 
+	getTurnLabel: (inputTurnNumber) ->
+		console.log 'getting turn label', inputTurnNumber
+		# Backward-compatibility
+		if !isFinite(inputTurnNumber)
+			return inputTurnNumber
+		# else if inputTurnNumber is 0
+		# 	return 'Hero Pick'
+		
+		return 'p' + inputTurnNumber
+
+	getTurnNumberFromLabel: (turn) ->
+		if isFinite(turn)
+			return turn
+		# else if 'Hero Pick' is turn
+		# 	return 0
+
+		return turn.substring(1, turn.length)
+
 module.exports = ReplayPlayer
