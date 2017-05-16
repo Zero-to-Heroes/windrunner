@@ -22,7 +22,7 @@ class ReplayPlayer extends EventEmitter
 		@currentPick = -1
 		if (!@detectedHeroes?[0])
 			@currentPick = 0
-		console.log 'detected heroes, currentPick', @detectedHeroes, @currentPick
+		# console.log 'detected heroes, currentPick', @detectedHeroes, @currentPick
 
 		# Go to the fisrt action - hero selection
 		@goNextPick()
@@ -51,7 +51,7 @@ class ReplayPlayer extends EventEmitter
 		# https://regex101.com/r/zX2gF9/1
 		pickRegex = /(?:p(?:ick )?|P(?:ick )?)(\d?\d)(?::|\s|,|\.|$)/gm
 
-		console.log 'decorating pick', text
+		# console.log 'decorating pick', text
 		that = this
 
 		match = pickRegex.exec(text)
@@ -116,7 +116,7 @@ class ReplayPlayer extends EventEmitter
 		return playerInfo
 
 	isValid: ->
-		console.log('file valid?', @detectedCards, @pickedCards, @pickedHero)
+		# console.log('file valid?', @detectedCards, @pickedCards, @pickedHero)
 		return @detectedCards?.length > 0 and @pickedCards?.length > 0 and @pickedHero?.length > 0
 
 
@@ -125,12 +125,12 @@ class ReplayPlayer extends EventEmitter
 
 	notifyChangePick: (inputPick) ->
 		pickNumber = inputPick || @currentPick
-		pickNumber = 'p' + pickNumber
+		console.log 'notify notifyChangePick', pickNumber
 
 		@onTurnChanged? pickNumber
 
 	getTurnLabel: (inputTurnNumber) ->
-		console.log 'getting turn label', inputTurnNumber
+		# console.log 'getting turn label', inputTurnNumber
 		# Backward-compatibility
 		if !isFinite(inputTurnNumber)
 			return inputTurnNumber
