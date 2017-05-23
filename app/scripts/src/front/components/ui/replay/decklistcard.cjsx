@@ -6,7 +6,7 @@ class DecklistCard extends React.Component
 
 	render: ->
 		locale = if window.localStorage.language and window.localStorage.language != 'en' then '/' + window.localStorage.language else ''
-		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards#{locale}/#{@props.card.cardImage}"
+		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/fullcards/en/256/#{@props.card.cardImage}"
 
 		style =
 			backgroundImage: "url(#{art})"
