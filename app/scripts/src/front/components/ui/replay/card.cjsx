@@ -23,6 +23,9 @@ class Card extends React.Component
 			# console.log '\tgangs card'
 			imageCls += ' quick-fix'
 
+		if card.type is 'Hero'
+			imageCls += ' hero-card'
+
 		if @props.isPicked and @props.showPick
 			overlay = <span className="glyphicon glyphicon-ok picked"></span>
 

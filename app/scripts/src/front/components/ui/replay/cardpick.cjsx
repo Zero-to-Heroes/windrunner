@@ -14,7 +14,7 @@ class CardPick extends React.Component
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1]?.Item1
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1]?.Item2
 		detectedCards.push @props.replay.detectedCards[@props.replay.currentPick - 1]?.Item3
-		# console.log 'detected cards', detectedCards
+		console.log 'detected cards', detectedCards
 
 		picked = @props.replay.pickedCards[@props.replay.currentPick - 1]
 		showPick = @props.showPick
@@ -26,6 +26,7 @@ class CardPick extends React.Component
 			card = cardUtils.getCard entity
 			# card = card[0]
 			if card
+				console.log 'resolved card', card
 				<Card card={card} key={card.id} isPicked={entity == picked} showPick={showPick} cardUtils={cardUtils}/>
 
 		return <div className="pick">
