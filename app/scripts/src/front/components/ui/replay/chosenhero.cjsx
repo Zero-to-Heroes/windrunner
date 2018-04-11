@@ -7,7 +7,7 @@ _ = require 'lodash'
 class ChosenHero extends React.Component
 	componentDidMount: ->
 		cards = @props.replay.cardUtils.jsonDatabase
-		@heroCards = _.filter cards, (o) -> 
+		@heroCards = _.filter cards, (o) ->
 			return o.type == 'Hero' and o.playerClass and o.set == 'Core'
 
 
@@ -17,12 +17,12 @@ class ChosenHero extends React.Component
 		return null unless replay.pickedHero and replay.currentPick > 0 and @heroCards?.length > 0
 
 		console.log 'rendering hero', replay.pickedHero, @heroCards
-		card = _.filter @heroCards, (o) -> 
+		card = _.filter @heroCards, (o) ->
 				o.playerClass.toLowerCase() == replay.pickedHero.toLowerCase()
 		card = card[0]
 
 
-		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/#{card.cardImage}"
+		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.cardImage}"
 
 		style =
 			backgroundImage: "url(#{art})"

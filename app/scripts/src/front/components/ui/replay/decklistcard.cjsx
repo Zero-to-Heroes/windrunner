@@ -6,7 +6,7 @@ class DecklistCard extends React.Component
 
 	render: ->
 		locale = if window.localStorage.language and window.localStorage.language != 'en' then '/' + window.localStorage.language else ''
-		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/fullcards/en/256/#{@props.card.cardImage}"
+		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{@props.card.cardImage}"
 
 		style =
 			backgroundImage: "url(#{art})"
@@ -25,7 +25,7 @@ class DecklistCard extends React.Component
 			cls += " number"
 
 		cardName = @props.replay.cardUtils.localizeName(@props.replay.cardUtils.getCard(@props.card.id))
-		costSrc = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/allCards/mana/#{@props.card.cost}.png"
+		costSrc = "http://static.zerotoheroes.com/hearthstone/asset/mana/#{@props.card.cost}.png"
 		return 	<div className={cls} data-tip={link} data-html={true} data-place="right" data-effect="solid" data-delay-show="100" data-class="card-tooltip">
 					<img src={costSrc} className="cost"></img>
 					<span className="name">{cardName}</span>

@@ -6,12 +6,12 @@ class Card extends React.Component
 
 	render: ->
 		locale = if window.localStorage.language and window.localStorage.language != 'en' then '/' + window.localStorage.language else ''
-		
-		card = @props.card
-		
-		art = "https://s3.amazonaws.com/com.zerotoheroes/plugins/hearthstone/fullcards/en/256/#{card.cardImage}"
 
-		style = 
+		card = @props.card
+
+		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.cardImage}"
+
+		style =
 			backgroundImage: "url(#{art})"
 		cls = "game-card"
 
