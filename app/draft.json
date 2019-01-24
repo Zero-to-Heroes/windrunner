@@ -1,1 +1,192 @@
-{"pickedhero":"mage","detectedheroes":[],"detectedcards":[{"Item1":"Coldlight Seer","Item2":"Gadgetzan Auctioneer","Item3":"Servant of Kalimos"},{"Item1":"Ozruk","Item2":"Frost Lich Jaina","Item3":"Prince Valanar"},{"Item1":"Tainted Zealot","Item2":"Vryghoul","Item3":"Volatile Elemental"},{"Item1":"Fallen Sun Cleric","Item2":"Cobalt Scalebane","Item3":"Violet Illusionist"},{"Item1":"Prince Malchezaar","Item2":"Frost Lich Jaina","Item3":"Soggoth the Slitherer"},{"Item1":"Leper Gnome","Item2":"Hyldnir Frostrider","Item3":"Duskboar"},{"Item1":"Bloodworm","Item2":"Murloc Tidehunter","Item3":"Fireball"},{"Item1":"Vryghoul","Item2":"Wisp","Item3":"Hired Gun"},{"Item1":"The Lich King","Item2":"Medivh, the Guardian","Item3":"Wrathion"},{"Item1":"Ticking Abomination","Item2":"Ghastly Conjurer","Item3":"Humongous Razorleaf"},{"Item1":"Young Priestess","Item2":"Vaporize","Item3":"Questing Adventurer"},{"Item1":"Grim Necromancer","Item2":"Frost Nova","Item3":"Raging Worgen"},{"Item1":"Hired Gun","Item2":"Arcanologist","Item3":"Stormpike Commando"},{"Item1":"Nerubian Unraveler","Item2":"Tortollan Primalist","Item3":"Forbidden Flame"},{"Item1":"Kabal Chemist","Item2":"Shatter","Item3":"Stormwatcher"},{"Item1":"Y'Shaarj, Rage Unbound","Item2":"Pyros","Item3":"Frost Lich Jaina"},{"Item1":"Aberrant Berserker","Item2":"Cobalt Scalebane","Item3":"Dragonling Mechanic"},{"Item1":"Golakka Crawler","Item2":"Servant of Yogg-Saron","Item3":"Corrupted Seer"},{"Item1":"Razorfen Hunter","Item2":"Mana Wyrm","Item3":"Cryomancer"},{"Item1":"Ice Block","Item2":"Corpsetaker","Item3":"Tortollan Primalist"},{"Item1":"Validated Doomsayer","Item2":"Primordial Glyph","Item3":"Meteor"},{"Item1":"Arcane Explosion","Item2":"Spawn of N'Zoth","Item3":"Windfury Harpy"},{"Item1":"Worgen Greaser","Item2":"Coldwraith","Item3":"Ice Barrier"},{"Item1":"Frost Elemental","Item2":"Ironfur Grizzly","Item3":"Southsea Deckhand"},{"Item1":"Mad Bomber","Item2":"Freezing Potion","Item3":"Blowgill Sniper"},{"Item1":"Mirror Entity","Item2":"Wretched Tiller","Item3":"Murloc Raider"},{"Item1":"Deadscale Knight","Item2":"Lord of the Arena","Item3":"Bonemare"},{"Item1":"Netherspite Historian","Item2":"Tuskarr Fisherman","Item3":"Cult Apothecary"},{"Item1":"Amani Berserker","Item2":"Tuskarr Fisherman","Item3":"Sorcerer's Apprentice"},{"Item1":"Bone Drake","Item2":"Murloc Tidecaller","Item3":"Corrupted Seer"}],"pickedcards":["Servant of Kalimos","Frost Lich Jaina","Volatile Elemental","Cobalt Scalebane","Frost Lich Jaina","Hyldnir Frostrider","Fireball","Hired Gun","The Lich King","Ghastly Conjurer","Young Priestess","Grim Necromancer","Arcanologist","Forbidden Flame","Kabal Chemist","Pyros","Cobalt Scalebane","Corrupted Seer","Mana Wyrm","Tortollan Primalist","Meteor","Arcane Explosion","Coldwraith","Frost Elemental","Mad Bomber","Mirror Entity","Bonemare","Tuskarr Fisherman","Amani Berserker","Bone Drake"]}
+{
+    "detectedheroes": [
+        null,
+        null,
+        null
+    ],
+    "pickedhero": "Hunter",
+    "detectedcards": [
+        {
+            "Item1": "GIL_207",
+            "Item2": "GIL_681",
+            "Item3": "DS1_188"
+        },
+        {
+            "Item1": "NEW1_031",
+            "Item2": "ICC_029",
+            "Item3": "ICC_705"
+        },
+        {
+            "Item1": "BOT_402",
+            "Item2": "TRL_015",
+            "Item3": "UNG_076"
+        },
+        {
+            "Item1": "NEW1_031",
+            "Item2": "ICC_200",
+            "Item3": "EX1_611"
+        },
+        {
+            "Item1": "GIL_607t",
+            "Item2": "EX1_611",
+            "Item3": "BOT_035"
+        },
+        {
+            "Item1": "GIL_118",
+            "Item2": "GIL_562",
+            "Item3": "BOT_402"
+        },
+        {
+            "Item1": "GIL_212",
+            "Item2": "TRL_517",
+            "Item3": "DS1_178"
+        },
+        {
+            "Item1": "TRL_010",
+            "Item2": "GIL_212",
+            "Item3": "TRL_015"
+        },
+        {
+            "Item1": "TRL_348",
+            "Item2": "NEW1_031",
+            "Item3": "UNG_072"
+        },
+        {
+            "Item1": "LOOT_079",
+            "Item2": "ICC_466",
+            "Item3": "ICC_027"
+        },
+        {
+            "Item1": "GIL_120",
+            "Item2": "LOOT_167",
+            "Item3": "ICC_855"
+        },
+        {
+            "Item1": "EX1_032",
+            "Item2": "UNG_076",
+            "Item3": "BOT_033"
+        },
+        {
+            "Item1": "ICC_028",
+            "Item2": "EX1_610",
+            "Item3": "LOOT_383"
+        },
+        {
+            "Item1": "TRL_505",
+            "Item2": "BOT_431",
+            "Item3": "UNG_071"
+        },
+        {
+            "Item1": "BOT_445",
+            "Item2": "CS2_117",
+            "Item3": "NEW1_041"
+        },
+        {
+            "Item1": "EX1_536",
+            "Item2": "UNG_912",
+            "Item3": "NEW1_031"
+        },
+        {
+            "Item1": "TRL_010",
+            "Item2": "GIL_562",
+            "Item3": "TRL_015"
+        },
+        {
+            "Item1": "ICC_026",
+            "Item2": "TRL_512",
+            "Item3": "BOT_606"
+        },
+        {
+            "Item1": "LOOT_078",
+            "Item2": "CS2_182",
+            "Item3": "GIL_124"
+        },
+        {
+            "Item1": "BOT_251",
+            "Item2": "GIL_207",
+            "Item3": "EX1_032"
+        },
+        {
+            "Item1": "ICC_026",
+            "Item2": "TRL_517",
+            "Item3": "GIL_212"
+        },
+        {
+            "Item1": "BOT_402",
+            "Item2": "TRL_508",
+            "Item3": "LOOT_132"
+        },
+        {
+            "Item1": "NEW1_031",
+            "Item2": "EX1_538",
+            "Item3": "EX1_539"
+        },
+        {
+            "Item1": "BOT_035",
+            "Item2": "BOT_539",
+            "Item3": "EX1_617"
+        },
+        {
+            "Item1": "UNG_915",
+            "Item2": "EX1_536",
+            "Item3": "EX1_611"
+        },
+        {
+            "Item1": "TRL_512",
+            "Item2": "BOT_563",
+            "Item3": "TRL_517"
+        },
+        {
+            "Item1": "UNG_205",
+            "Item2": "TRL_531",
+            "Item3": "EX1_162"
+        },
+        {
+            "Item1": "UNG_809",
+            "Item2": "TRL_111",
+            "Item3": "LOOT_413"
+        },
+        {
+            "Item1": "GIL_667",
+            "Item2": "TRL_550",
+            "Item3": "LOOT_132"
+        },
+        {
+            "Item1": "EX1_536",
+            "Item2": "LOOT_522",
+            "Item3": "LOOT_080"
+        }
+    ],
+    "pickedcards": [
+        "GIL_681",
+        "NEW1_031",
+        "UNG_076",
+        "EX1_611",
+        "EX1_611",
+        "GIL_562",
+        "GIL_212",
+        "TRL_015",
+        "TRL_348",
+        "ICC_466",
+        "LOOT_167",
+        "UNG_076",
+        "EX1_610",
+        "TRL_505",
+        "BOT_445",
+        "EX1_536",
+        "TRL_015",
+        "ICC_026",
+        "CS2_182",
+        "BOT_251",
+        "ICC_026",
+        "LOOT_132",
+        "NEW1_031",
+        "BOT_035",
+        "UNG_915",
+        "TRL_512",
+        "EX1_162",
+        "TRL_111",
+        "LOOT_132",
+        "EX1_536"
+    ]
+}

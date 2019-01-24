@@ -9,7 +9,7 @@ class Card extends React.Component
 
 		card = @props.card
 
-		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.cardImage}"
+		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.id}.png"
 
 		style =
 			backgroundImage: "url(#{art})"

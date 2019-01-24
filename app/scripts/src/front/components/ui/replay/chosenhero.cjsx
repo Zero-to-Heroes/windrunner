@@ -22,7 +22,7 @@ class ChosenHero extends React.Component
 		card = card[0]
 
 
-		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.cardImage}"
+		art = "http://static.zerotoheroes.com/hearthstone/fullcard/en/256/#{card.id}.png"
 
 		style =
 			backgroundImage: "url(#{art})"
